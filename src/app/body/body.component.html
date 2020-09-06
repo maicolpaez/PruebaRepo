@@ -1,0 +1,70 @@
+<body>
+    <main>
+        <section id="banner">
+            <img [src]="urlCocker" *ngIf="mostrarCocker">
+            <a (click)="mostrarCocker = !mostrarCocker;" class="oprimeme1" href="#">¡Oprimeme!</a>
+            <div class="contenedor">
+                <h2>Hola</h2>{{usuario}}
+                <h2>Mascotas y niños felices</h2>
+                <p>¿Cuál es la mejor mascota para usted?</p>
+                <p *ngIf="mostrarParrafo"><br><br>
+                    * Si eres una persona, independiente, trabajador, con poco tiempo en casa.<br>
+                    Puedes tener un gato.<br><br>
+                    * Si eres una persona, atletica, jugueton y te gusta caminar.<br>
+                    Puedes tener un perro.<br><br>
+                    * Si eres una persona tranquila, libre, y hogareña.<br>
+                    Puedes tener un ave.
+                    </p>
+                <a (click)="mostrarParrafo = !mostrarParrafo;" href="#">Leer mas</a>
+            </div>
+        </section>            
+        <section id="bienvenidos">
+        <div class="contenedor">
+            <h2>BIENVENIDOS A NUESTRO CLUB</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem ea eum alias reiciendis, tempore fugiat, distinctio nihil corrupti hic nostrum!</p>
+        </div>
+        </section>
+        <section id="blog">
+            <h3>Nuestra veterianaria</h3><br><br>
+            <div class="contenedor">
+                <div *ngFor="let url of adopcionUrl"><br>
+                    <div class="row">
+                        <img [src]="url" *ngIf="mostrarAdopcion">
+                    </div>
+                </div>
+            </div>    
+        </section>
+        <section id="info">
+            <div class="contenedor">
+                <div class="row" *ngFor="let arregloInterno of urlAnimales">
+                    <div *ngFor="let url of arregloInterno">
+                        <div class="info-pet">
+                            <img [src]="url">
+                            <h3>{{disponibles[url]["nombre"]}}</h3>
+                        </div>
+                        <p *ngIf="disponibles[url]['estado']">
+                            {{disponibles[url]["raza"]}}<br>
+                            {{disponibles[url]["descripcion"]}}
+                        </p>
+                        <button class="oprimeme1" (click) = "disponibles[url]['estado'] = !disponibles[url]['estado']">Informacion</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="info">
+            <h3>Para muchos de nosotros las mascotas no son simples compañeros, son miembros de la familia ¡ADOPTA!.</h3>
+            <div class="contenedor">
+                <div *ngFor="let position of adopcionUrl2">
+                    <div class="info-pet">
+                        <img [src]="position" *ngIf="mostrarAdopcion2">
+                        <h4></h4>
+                    </div>
+                </div>
+            </div>
+        <a (click)="mostrarAdopcion2 = !mostrarAdopcion2;" class="oprimeme1" href="#">¡Ver Animelaes para adopcion!</a>
+        
+    </section>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </main>
+</body>
+<router-outlet></router-outlet>
+
